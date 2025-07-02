@@ -1,0 +1,1 @@
+addons_path=addons
