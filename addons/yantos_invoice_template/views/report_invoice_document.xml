@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[@class='row mt32 mb32']/div[1]" position="replace">
+      <div class="col-auto">
+        <strong>Постачальник:</strong><br/>
+        <t t-esc="company.name"/><br/>
+        <t t-esc="company.street"/><br/>
+        <t t-esc="company.city"/><br/>
+        IBAN: <t t-esc="company.bank_account_id.acc_number"/><br/>
+        ІПН: <t t-esc="company.vat"/>
+      </div>
+    </xpath>
+
+    <xpath expr="//div[@class='row mt32 mb32']/div[2]" position="replace">
+      <div class="col-auto">
+        <strong>Покупець:</strong><br/>
+        <t t-esc="partner.name"/><br/>
+        <t t-esc="partner.street"/><br/>
+        <t t-esc="partner.city"/>
+      </div>
+    </xpath>
+
+    <xpath expr="//div[@class='row']/div[2]/p" position="after">
+      <p><strong>Сума до оплати прописом:</strong>
+      <span t-esc="o.currency_id.amount_to_text(o.amount_total)"/></p>
+    </xpath>
+  </template>
+</odoo>
